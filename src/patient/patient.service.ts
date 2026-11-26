@@ -14,7 +14,7 @@ export class PatientService {
   }
 
   findOne(id: number) { 
-    return this.prisma.patient.findUnique({
+    return this.prisma.patient.findUniqueOrThrow({
       where: { id }
     })
   }

@@ -14,17 +14,13 @@ export class PatientController {
  
   @Get(':id')
   async findOne(@Param('id', ParseIntPipe) id: number) {
-    const patient = await this.patientService.findOne(id);
-    if (!patient) {
-      throw new NotFoundException(`El paciente con ID ${id} no existe`);
-    }
-    return patient;
+    return this.patientService.findOne(id);
+    
   }
 
   @Post()
   create(@Body() createPatientDto: CreatePatientDto) {
-
-    return this.patientService.create(createPatientDto);
+ return this.patientService.create(createPatientDto);
   }
 
   @Patch(':id')

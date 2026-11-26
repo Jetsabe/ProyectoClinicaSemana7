@@ -13,19 +13,15 @@ export class DoctorService {
 
 
 findOne(id: number) { 
- return this.prisma.doctor.findUnique({
+ return this.prisma.doctor.findUniqueOrThrow({
   where: { id }
  })
 }
 
-async create(data: CreateDoctorDto) {
-   const doctor = await this.prisma.doctor.findUnique({
-    where: {email: data.email},
-    });
-    if (doctor){
-      throw new BadRequestException('Este correo ya existe en otro usuario');
-    }
-    return this.prisma.doctor.create({data})
+create(data: CreateDoctorDto) {
+  return this.prisma.doctor.create({
+    data,
+  });
 }
 
 update(id: number, data: UpdateDoctorDto) {
