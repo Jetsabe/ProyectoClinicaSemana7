@@ -24,11 +24,8 @@ export class DoctorController {
 
   @Get(':id')
   async findOne(@Param('id', ParseIntPipe) id: number) {
-    const doctor = await this.doctorService.findOne(id);
-    if (!doctor) {
-      throw new NotFoundException(`El doctor con ID ${id} no existe`);
-    }
-    return doctor;
+    return this.doctorService.findOne(id);
+    
   }
 
   @Post()
