@@ -10,7 +10,7 @@ Patch} from '@nestjs/common'
 import { DoctorService } from './doctor.service.js';
 import { CreateDoctorDto } from './dto/create-doctor.dto.js';
 import { UpdateDoctorDto } from './dto/update-doctor.dto.js';
-import { isNumber } from '@nestjs/common/internal';
+
 
 
  @Controller('doctor')
@@ -38,11 +38,11 @@ export class DoctorController {
 
   @Patch(':id')
   update(@Param('id', ParseIntPipe) id: number, @Body() UpdateDoctorDto: UpdateDoctorDto) {
-    return this.doctorService.update(+id, UpdateDoctorDto);
+    return this.doctorService.update(id, UpdateDoctorDto);
   }
 
   @Delete(':id')
   remove(@Param('id', ParseIntPipe) id: number) {
-    return this.doctorService.remove(+id);
+    return this.doctorService.remove(id);
   }
 } 
