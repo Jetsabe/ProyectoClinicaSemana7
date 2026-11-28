@@ -2,6 +2,17 @@ import { Controller, Get, Post, Body, Param, Delete, ParseIntPipe, NotFoundExcep
 import { PatientService } from './patient.service.js';
 import { CreatePatientDto } from './dto/create-patient.dto.js';
 import { UpdatePatientDto } from './dto/update-patient.dto.js';
+import { UseGuards } from '@nestjs/common'
+import { JwtAuthGuard } from '../auth/guard/jwt-auth.guard.js';
+import { RolesGuard } from '../auth/guard/roles.guard.js';
+import { Roles } from '../auth/decorator/roles.decorator.js';
+
+@Controller('patient')
+@UseGuards(JwtAuthGuard, RolesGuard)
+@Roles('RECEPTION')
+export class PatientsController {
+  // ...
+}
 
 @Controller('patient')
 export class PatientController {

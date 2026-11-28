@@ -10,6 +10,17 @@ Patch} from '@nestjs/common'
 import { DoctorService } from './doctor.service.js';
 import { CreateDoctorDto } from './dto/create-doctor.dto.js';
 import { UpdateDoctorDto } from './dto/update-doctor.dto.js';
+import { UseGuards } from '@nestjs/common'
+import { JwtAuthGuard } from '../auth/guard/jwt-auth.guard.js';
+import { RolesGuard } from '../auth/guard/roles.guard.js';
+import { Roles } from '../auth/decorator/roles.decorator.js';
+
+@Controller('doctor')
+@UseGuards(JwtAuthGuard, RolesGuard)
+@Roles('RECEPTION')
+export class DoctorsController {
+  // ...
+}
 
 
 

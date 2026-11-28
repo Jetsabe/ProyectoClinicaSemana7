@@ -3,6 +3,8 @@ allowBuilds:
 permissions:
   '@prisma/engines':
     build: true
+  '@scarf/scarf':
+    build: true
   prisma:
     build: true
     skills: true

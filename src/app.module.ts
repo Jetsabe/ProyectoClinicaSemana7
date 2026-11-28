@@ -5,6 +5,7 @@ import { PrismaModule } from './prisma/prisma.module.js';
 import { PatientModule } from './patient/patient.module.js';
 
 import { DoctorModule } from './doctor/doctor.module.js';
+import { AuthModule } from './auth/auth.module.js';
 
 export const { ObserveModule, ObserveInstrument } = createObserveModule();
 
@@ -21,6 +22,7 @@ export const { ObserveModule, ObserveInstrument } = createObserveModule();
     PrismaModule,
     PatientModule,
     DoctorModule,
+    AuthModule,
   ],
   
 })
